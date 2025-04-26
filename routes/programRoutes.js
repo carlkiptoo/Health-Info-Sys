@@ -5,6 +5,6 @@ import {createProgram} from '../controllers/programController.js';
 const router = express.Router();
 
 //This creates a new program
-router.post('/program', createProgram);
+router.post('/', createProgram);
 
 export default router;

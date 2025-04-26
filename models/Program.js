@@ -5,6 +5,6 @@ const programSchema = new mongoose.Schema({
     description: String,
 });
 
-const Program = mongoose.model('program', programSchema);
+const Program = mongoose.model('Program', programSchema);
 
 export default Program;
