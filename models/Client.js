@@ -6,7 +6,7 @@ const clientSchema = new mongoose.Schema({
     age: Number,
     gender: String,
     phone: String,
-    enrolledPrograms: [{type: mongoose.Schema.Types.ObjectId, ref: 'program'}],
+    enrolledPrograms: [{type: mongoose.Schema.Types.ObjectId, ref: 'Program'}],
 });
 
 const Client = mongoose.model('client', clientSchema);

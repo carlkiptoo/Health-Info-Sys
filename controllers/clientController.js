@@ -34,7 +34,7 @@ export const registerClient = async (req, res, next) => {
 
 export const searchClient = async (req, res, next) => {
     try {
-        const {clientName, email} = req.body;
+        const {clientName, email} = req.query;
 
         if (!clientName && !email) {
             return res.status(400).json({message: 'Client name or email is required'});
