@@ -1,5 +1,5 @@
 import express from 'express';
-import {registerClient, searchClient} from '../controllers/clientController.js';
+import {registerClient, searchClient, getClientProfile} from '../controllers/clientController.js';
 
 const router = express.Router();
 
@@ -9,10 +9,8 @@ router.post('/', registerClient);
 //Searches for clients
 router.get('/search', searchClient);
 
-router.get('/', async (req, res) => {
-    const clients = await Client.find();
-    res.json(clients);
-  });
+//Gets a client's profile
+router.get('/:clientId', getClientProfile);
   
 
 export default router;
