@@ -59,3 +59,21 @@ export const searchClient = async (req, res, next) => {
         next(error);
     }
 }
+
+export const getClientProfile = async (req, res, next) => {
+    try {
+        const {clientId} = req.params;
+
+        const client = await Client.findById(clientId).populate('enrolledPrograms');
+
+        if (!client) {
+            return res.status(404).json({message: 'Client not found'});
+        }
+
+        res.status(200).json(client);
+    } catch (error) {
+        console.log("Error getting client profile", error.message);
+        res.status(500).json(error);
+        next(error);
+    }
+}
