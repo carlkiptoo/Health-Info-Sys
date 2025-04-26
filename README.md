@@ -79,4 +79,3 @@ GET | /api/client/:id | View a client's profile including enrolled programs
 
 ## Author
 Kirui Kiptoo Carlos
-[Contact](carlosiamcarl@gmail.com)
