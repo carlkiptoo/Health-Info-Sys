@@ -1,5 +1,6 @@
 import Client from '../models/Client.js';
 import Program from '../models/Program.js';
+import mongoose from 'mongoose';
 
 export const enrollClient = async (req, res, next) => {
     try {
@@ -17,7 +18,9 @@ export const enrollClient = async (req, res, next) => {
             return res.status(404).json({message: 'Client not found'});
         }
 
-        const programs = await Program.findById({_id: {$in: programId}});
+        const objectIds = programId.map(id => new mongoose.Types.ObjectId(id));
+
+        const programs = await Program.find({_id: {$in: objectIds}});
         if (programs.length !== programId.length) {
             return res.status(404).json({message: 'Program not found'});
         }
