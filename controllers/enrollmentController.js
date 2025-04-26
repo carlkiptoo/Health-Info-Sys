@@ -20,12 +20,21 @@ export const enrollClient = async (req, res, next) => {
 
         const objectIds = programId.map(id => new mongoose.Types.ObjectId(id));
 
-        const programs = await Program.find({_id: {$in: objectIds}});
-        if (programs.length !== programId.length) {
-            return res.status(404).json({message: 'Program not found'});
+        const existingPrograms = await Program.find({_id: {$in: objectIds}});
+        const existingProgramIds = existingPrograms.map(program => program._id.toString());
+
+        const missingPrograms = objectIds.filter(id => !existingProgramIds.includes(id.toString()));
+
+        if (missingPrograms.length > 0) {
+            return res.status(404).json({
+                message: 'Program not found',
+                missingProgramIdds: missingPrograms
+            })
         }
 
-        client.enrolledPrograms.push(...programs);
+        
+
+        client.enrolledPrograms.push(...programId);
 
         client.enrolledPrograms = [...new Set(client.enrolledPrograms.map(id => id.toString()))];
 
