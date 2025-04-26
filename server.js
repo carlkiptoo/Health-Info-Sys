@@ -6,6 +6,7 @@ import cors from 'cors';
 import programRoutes from './routes/programRoutes.js';
 import clientRoutes from './routes/clientRoutes.js';
 import enrollmentRoutes from './routes/enrollmentRoute.js';
+import {errorHandler} from './middleware/errorHandler.js';
 
 dotenv.config();
 
@@ -23,5 +24,6 @@ app.use((err,req, res, next) => {
     res.status(500).json({message: 'Internal server error', error: err.message});
 
 });
+app.use(errorHandler);
 
 app.listen(process.env.PORT, () => console.log(`Server is running on port ${process.env.PORT}`));
