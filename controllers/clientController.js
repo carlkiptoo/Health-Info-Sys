@@ -31,3 +31,31 @@ export const registerClient = async (req, res, next) => {
         next(error);
     }
 }
+
+export const searchClient = async (req, res, next) => {
+    try {
+        const {clientName, email} = req.body;
+
+        if (!clientName && !email) {
+            return res.status(400).json({message: 'Client name or email is required'});
+        }
+
+        const searchCriteria = {};
+
+        if (clientName) {
+            searchCriteria.clientName = {$regex: clientName, $options: 'i'};
+        }
+
+        if (email) {
+            searchCriteria.email = {$regex: email, $options: 'i'};
+        }
+
+        const clients = await Client.find(searchCriteria).populate('enrolledPrograms');
+
+        res.status(200).json(clients);
+    } catch (error) {
+        console.log("Error searching clients", error.message);
+        res.status(500).json(error);
+        next(error);
+    }
+}
