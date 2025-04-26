@@ -32,9 +32,9 @@ export const enrollClient = async (req, res, next) => {
             })
         }
 
-        
+        const programIdArray = Array.isArray(programId) ? programId : [programId];
 
-        client.enrolledPrograms.push(...programId);
+        client.enrolledPrograms.push(...programIdArray);
 
         client.enrolledPrograms = [...new Set(client.enrolledPrograms.map(id => id.toString()))];
 
