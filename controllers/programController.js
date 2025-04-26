@@ -1,6 +1,6 @@
 import Program from '../models/Program.js';
 
-export const createProgram = async (req, res) => {
+export const createProgram = async (req, res, next) => {
     try{
         const {programName, description} = req.body;
 
@@ -25,5 +25,6 @@ export const createProgram = async (req, res) => {
     } catch (error) {
         console.log("Error creating program", error.message);
         res.status(500).json(error);
+        next(error);
     }
 }

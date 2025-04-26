@@ -16,10 +16,10 @@ mongoose.connect(process.env.MONGO_URI, {
 
 app.use('/api/program', programRoutes);
 
-// app.use((err,req, res, next) => {
-//     console.error('Unhandled error', err.message);
-//     res.status(500).json({message: 'Internal server error', error: err.message});
+app.use((err,req, res, next) => {
+    console.error('Unhandled error', err.message);
+    res.status(500).json({message: 'Internal server error', error: err.message});
 
-// });
+});
 
 app.listen(process.env.PORT, () => console.log(`Server is running on port ${process.env.PORT}`));
