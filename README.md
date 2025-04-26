@@ -1,146 +1,81 @@
-# Health-Info-Sys
-Health Information System API
-A backend API for managing clients and health programs/services.
-Built with Node.js, Express, and MongoDB.
+# Health Information System API
 
-📚 Table of Contents
-About
+A backend API for managing clients and health programs/services.  
+Built with **Node.js**, **Express**, and **MongoDB**.
 
-Features
+---
 
-Tech Stack
+## Table of Contents
+- [About](#about)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Setup Instructions](#setup-instructions)
+- [Environment Variables](#environment-variables)
+- [API Endpoints](#api-endpoints)
+- [Demo](#demo)
+- [Author](#author)
 
-Setup Instructions
+---
 
-Environment Variables
+## About
 
-API Endpoints
-
-Project Structure
-
-Demo
-
-Author
-
-📖 About
 This project simulates a basic health information system that allows doctors to:
+- Create health programs (e.g., TB, Malaria, HIV).
+- Register new clients.
+- Enroll clients into one or more programs.
+- Search for clients by name or email.
+- View client profiles with enrolled programs.
+- Expose client profile information via API for external systems.
 
-Create health programs (e.g., TB, Malaria, HIV).
+---
 
-Register new clients.
+## Features
+- RESTful API design
+- MongoDB database integration
+- Mongoose ODM for schema management
+- Clean and modular code architecture
+- Error handling middleware
+- Client search functionality (case-insensitive)
+- Enrolled programs population in client profiles
 
-Enroll clients into one or more programs.
+---
 
-Search for clients by name or email.
+## 🛠️ Tech Stack
+- **Backend:** Node.js, Express
+- **Database:** MongoDB (Mongoose ODM)
+- **Other:** dotenv, Nodemon
 
-View client profiles with enrolled programs.
+---
 
-Expose client profile information via API for external systems.
+## 🚀 Setup Instructions
 
-✨ Features
-RESTful API design
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/carlkiptoo/Health-Info-Sys.git
+   cd Health-Info-Sys
+2. Install dependencies
+   ```bash
+   npm install
+3. Create .env file
+   In the root directory create a env file:
+   ```bash
+     MONGO_URI=mongodb://127.0.0.1:27017/healthinfosystem
+     PORT=5000
+     API_KEY=xxxxx
+4. Start development Server
+   ```bash
+      npm run dev
+## API Endpoints
+Method | Endpoint | Description
+POST | /api/program | Create a new health program
+POST | /api/client | Register a new client
+POST | /api/enrollment | Enroll a client into programs
+GET | /api/client/search?clientName=xxx | Search for clients by name
+GET | /api/client/search?email=xxx | Search for clients by email
+GET | /api/client/:id | View a client's profile including enrolled programs
 
-MongoDB database integration
+## Demo
+[This is a link to the demo](https://www.loom.com/share/5d667a3c532649e8bc6e2e27e1c97d7c?sid=4bb4eabd-7c79-4d58-85f6-2230596fed11)
 
-Mongoose ODM for schema management
-
-Clean and modular code architecture
-
-Error handling middleware
-
-Client search functionality (case-insensitive)
-
-Enrolled programs population in client profiles
-
-🛠️ Tech Stack
-Backend: Node.js, Express
-
-Database: MongoDB (Mongoose ODM)
-
-Other: dotenv, Nodemon
-
-🚀 Setup Instructions
-Clone the repository
-
-bash
-Copy
-Edit
-git clone https://github.com/your-username/health-info-system.git
-cd health-info-system
-Install dependencies
-
-bash
-Copy
-Edit
-npm install
-Create .env file
-
-In the root directory, add a .env file:
-
-ini
-Copy
-Edit
-MONGO_URI=mongodb://127.0.0.1:27017/healthinfosystem
-PORT=5000
-Start the development server
-
-bash
-Copy
-Edit
-npm run dev
-⚙️ Environment Variables
-
-Variable	Purpose
-MONGO_URI	Your MongoDB connection string
-PORT	Port where the server runs (default: 5000)
-🔗 API Endpoints
-
-Method	Endpoint	Description
-POST	/api/programs	Create a new health program
-POST	/api/clients	Register a new client
-POST	/api/enrollments	Enroll a client into programs
-GET	/api/clients/search?clientName=xxx	Search for clients by name
-GET	/api/clients/search?email=xxx	Search for clients by email
-GET	/api/clients/:id	View a client's profile including enrolled programs
-✅ All APIs return JSON responses.
-
-🗂️ Project Structure
-bash
-Copy
-Edit
-/controllers
-  clientController.js
-  programController.js
-  enrollmentController.js
-/models
-  Client.js
-  Program.js
-/routes
-  clientRoutes.js
-  programRoutes.js
-  enrollmentRoutes.js
-/config
-  db.js (optional)
-app.js
-.env
-.gitignore
-README.md
-🎥 Demo
-[Insert link to short Loom video / Postman screenshots here if available]
-
-Example:
-
-Creating a program
-
-Registering a client
-
-Enrolling client to programs
-
-Searching for client
-
-Viewing client profile
-
-👨‍💻 Author
-[Your Name]
-
-GitHub: [Your GitHub profile link]
+## Author
+Kirui Kiptoo Carlos
