@@ -50,6 +50,9 @@ export const searchClient = async (req, res, next) => {
             searchCriteria.email = {$regex: email, $options: 'i'};
         }
 
+        console.log('Search Criteria:', searchCriteria);
+
+
         const clients = await Client.find(searchCriteria).populate('enrolledPrograms');
 
         res.status(200).json(clients);
