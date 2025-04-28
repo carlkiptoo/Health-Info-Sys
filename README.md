@@ -66,13 +66,13 @@ This project simulates a basic health information system that allows doctors to:
    ```bash
       npm run dev
 ## API Endpoints
-Method | Endpoint | Description
-POST | /api/program | Create a new health program
-POST | /api/client | Register a new client
-POST | /api/enrollment | Enroll a client into programs
-GET | /api/client/search?clientName=xxx | Search for clients by name
-GET | /api/client/search?email=xxx | Search for clients by email
-GET | /api/client/:id | View a client's profile including enrolled programs
+Method | Endpoint | Description␣␣
+POST | /api/program | Create a new health program␣␣
+POST | /api/client | Register a new client␣␣
+POST | /api/enrollment | Enroll a client into programs␣␣
+GET | /api/client/search?clientName=xxx | Search for clients by name␣␣
+GET | /api/client/search?email=xxx | Search for clients by email␣␣
+GET | /api/client/:id | View a client's profile including enrolled programs␣␣
 
 ## Demo
 [This is a link to the demo](https://www.loom.com/share/5d667a3c532649e8bc6e2e27e1c97d7c?sid=4bb4eabd-7c79-4d58-85f6-2230596fed11)
