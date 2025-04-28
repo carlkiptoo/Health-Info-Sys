@@ -4,6 +4,8 @@ export const registerClient = async (req, res, next) => {
     try {
         const {clientName, email, age, gender, phone} = req.body;
 
+        
+
         if (!clientName) {
             return res.status(400).json({message: 'Client name is required'});
         }
@@ -79,7 +81,17 @@ export const getClientProfile = async (req, res, next) => {
     try {
         const {clientId} = req.params;
 
+        const cacheKey = `getClientProfile-${clientId}`;
+
+        if (cache[cacheKey]) {
+            console.log('Serving from cache');
+            return res.status(200).json(cache[cacheKey]);
+        }
+
         const client = await Client.findById(clientId).populate('enrolledPrograms');
+
+        cache[cacheKey] = client;
+        console.log('Serving from the db')
 
         if (!client) {
             return res.status(404).json({message: 'Client not found'});
