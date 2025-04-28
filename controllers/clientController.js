@@ -32,9 +32,18 @@ export const registerClient = async (req, res, next) => {
     }
 }
 
+const cache = {};
+
 export const searchClient = async (req, res, next) => {
     try {
         const {clientName, email} = req.query;
+
+        const cacheKey = `searchClient-${clientName}-${email}`;
+
+        if (cache[cacheKey]) {
+            console.log('Serving from cache');
+            return res.status(200).json(cache[cacheKey]);
+        }
 
         if (!clientName && !email) {
             return res.status(400).json({message: 'Client name or email is required'});
@@ -54,6 +63,9 @@ export const searchClient = async (req, res, next) => {
 
 
         const clients = await Client.find(searchCriteria).populate('enrolledPrograms');
+
+        cache[cacheKey] = clients;
+        console.log('Serving from db')
 
         res.status(200).json(clients);
     } catch (error) {
